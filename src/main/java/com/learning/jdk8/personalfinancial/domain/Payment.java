@@ -17,12 +17,15 @@ import java.time.LocalDate;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private PaymentDescription paymentDescription;
     @Column(name = "value_payment")
     private BigDecimal value;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate paymentDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rule_id")
+    private Rule7030 rule7030;
 
 }

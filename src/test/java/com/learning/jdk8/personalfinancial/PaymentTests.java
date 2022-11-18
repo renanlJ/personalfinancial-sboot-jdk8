@@ -17,6 +17,8 @@ import java.time.LocalDate;
 
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(PaymentController.class)
@@ -35,14 +37,20 @@ public class PaymentTests {
         String paymentJson = asJsonString(payment);
 
         this.mockMvc.perform(
-                post("/")
-                        .contentType(MediaType.APPLICATION_JSON).content(paymentJson))
-                .andExpect(status()
+                        post("/payment")
+                            .contentType(MediaType.APPLICATION_JSON).content(paymentJson))
+                    .andExpect(status()
                         .isCreated());
     }
 
-    public void shouldGet7030Rule(){
-
+    @Test
+    public void shouldGet7030Rule() throws Exception {
+        String payload = "{'paymentDate':'01/08/2022','paymentDescription':'SALARY'}";
+        this.mockMvc.perform(
+                        get("/payment")
+                            .contentType(MediaType.APPLICATION_JSON).content(payload))
+                    .andExpect(
+                            content().string("{'essential':'5500','education':'500','free':'1000','retirement':'1000','longTerm':'2000'}"));
     }
 
     public Payment getPaymentObject(){
@@ -51,7 +59,7 @@ public class PaymentTests {
                 .paymentDescription(PaymentDescription.SALARY)
                 .value(new BigDecimal(4000))
                 .paymentDate(
-                        LocalDate.of(2022, 8, 30))
+                        LocalDate.of(2022, 8, 1))
                 .build();
     }
 
