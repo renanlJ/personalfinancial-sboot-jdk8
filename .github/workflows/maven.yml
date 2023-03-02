@@ -6,11 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  build:
+  container-test-job:
     runs-on: ubuntu-latest
+    container: adoptopenjdk/maven-openjdk11
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
-      run: sudo apt-get update && sudo apt-get install openjdk-11-jdk && javac -version && java -version
+      run: javac -version && java -version
     - name: Build with Maven
       run: mvn -version && mvn -B package -DskipTests
+    
