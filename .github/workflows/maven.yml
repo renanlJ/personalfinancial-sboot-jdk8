@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
-      run: apt-get install openjdk-11-jdk
+      run: sudo apt-get install openjdk-11-jdk
     - name: Build with Maven
       run: mvn -version && mvn -B package -DskipTests
