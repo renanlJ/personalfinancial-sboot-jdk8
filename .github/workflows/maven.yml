@@ -1,5 +1,4 @@
 name: Java CI with Maven
-
 on:
   push:
     branches: [ "main" ]
@@ -14,5 +13,4 @@ jobs:
     - name: Set up JDK 11
       run: apt update && apt install maven -y && java -version
     - name: Build with Maven
-      run: mvn -version && mvn -B package -DskipTests
-    
+      run: mvn -version && mvn compile
