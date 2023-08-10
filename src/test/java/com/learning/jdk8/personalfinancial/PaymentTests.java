@@ -2,26 +2,31 @@ package com.learning.jdk8.personalfinancial;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.learning.jdk8.personalfinancial.controller.PaymentController;
 import com.learning.jdk8.personalfinancial.domain.Payment;
 import com.learning.jdk8.personalfinancial.domain.PaymentDescription;
+import com.learning.jdk8.personalfinancial.repository.PaymentRepository;
 import com.learning.jdk8.personalfinancial.service.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
 
 import static org.mockito.Mockito.doNothing;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PaymentController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class PaymentTests {
 
     @Autowired
@@ -29,6 +34,9 @@ public class PaymentTests {
 
     @MockBean
     private PaymentService paymentService;
+
+    @MockBean
+    private PaymentRepository paymentRepository;
 
     @Test
     public void shouldRegisterPayment() throws Exception {
@@ -44,13 +52,13 @@ public class PaymentTests {
     }
 
     @Test
-    public void shouldGet7030Rule() throws Exception {
-        String payload = "{'paymentDate':'01/08/2022','paymentDescription':'SALARY'}";
+    public void shouldGetAllPayments() throws Exception {
+        when(paymentRepository.findAll()).thenReturn(Collections.singletonList(getPaymentObject()));
         this.mockMvc.perform(
                         get("/payment")
-                            .contentType(MediaType.APPLICATION_JSON).content(payload))
+                            .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(
-                            content().string("{'essential':'5500','education':'500','free':'1000','retirement':'1000','longTerm':'2000'}"));
+                            content().json(asJsonString(Collections.singletonList(getPaymentObject()))));
     }
 
     public Payment getPaymentObject(){

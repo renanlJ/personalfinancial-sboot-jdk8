@@ -31,12 +31,8 @@ public class PaymentController {
     }
 
     @GetMapping
-    public Rule7030 get7030Rule(@RequestBody Payment payment){
-        Payment payment1 = paymentRepository.findByPaymentDateAndPaymentDescription(
-                payment.getPaymentDate(),
-                payment.getPaymentDescription());
-
-        return payment1.getRule7030();
+    public Iterable<Payment> getPayments(){
+        return paymentRepository.findAll();
     }
 
 }

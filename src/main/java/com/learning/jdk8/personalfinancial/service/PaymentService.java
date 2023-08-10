@@ -6,6 +6,8 @@ import com.learning.jdk8.personalfinancial.repository.PaymentRepository;
 import com.learning.jdk8.personalfinancial.repository.Rule7030Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -16,11 +18,9 @@ public class PaymentService {
     private PaymentRepository paymentRepository;
 
     public void register(Payment payment){
-        Rule7030 rule7030 = new Rule7030(payment);
-        payment.setRule7030(rule7030);
-        rule7030.setPayment(payment);
+        payment.setRule7030(new Rule7030(payment));
+        payment.getRule7030().setPayment(payment);
 
         paymentRepository.save(payment);
     }
-
 }
