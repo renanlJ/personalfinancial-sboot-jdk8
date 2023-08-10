@@ -10,7 +10,9 @@ jobs:
     container: openjdk:11
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      run: apt update && apt install maven -y && java -version
+    - name: Set up
+      run: apt update && apt install maven -y
     - name: Build with Maven
-      run: mvn -version && mvn compile
+      run: mvn compile
+    - name: Unit tests
+      run: mvn test
