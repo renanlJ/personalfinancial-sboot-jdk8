@@ -16,3 +16,4 @@ jobs:
       run: mvn compile
     - name: Unit tests
       run: mvn test
+
