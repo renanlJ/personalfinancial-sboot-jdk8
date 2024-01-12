@@ -19,6 +19,7 @@ jobs:
     - name: Unit tests
       run: mvn install -DskipTests
   generate-docker-image:
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
     - name: Setup Build Image
