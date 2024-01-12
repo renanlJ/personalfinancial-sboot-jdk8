@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "*" ]
 jobs:
-  build-test:
+  build:
     runs-on: ubuntu-latest
     container: openjdk:11
     steps:
@@ -14,12 +14,16 @@ jobs:
       run: apt update && apt install maven -y
     - name: Build with Maven
       run: mvn compile
-    - name: Unit tests
-      run: mvn test
-    - name: Unit tests
-      run: mvn install -DskipTests
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Unit tests
+        run: mvn test
+      - name: Install Package
+        run: mvn install -DskipTests
   generate-docker-image:
-    needs: build-test
+    needs: unit-tests
     runs-on: ubuntu-latest
     steps:
     - name: Setup Build Image
