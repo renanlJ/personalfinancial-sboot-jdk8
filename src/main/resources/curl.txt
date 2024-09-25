@@ -1,0 +1,6 @@
+curl -X POST http://localhost:8080/api/finance/calculate \
+-H "Content-Type: application/json" \
+-d '{
+    "amount": 5000,
+    "paymentDate": "2024-09-24"
+}'
