@@ -33,3 +33,4 @@ jobs:
       with:
         username: renanl
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
+
