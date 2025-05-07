@@ -1,1 +1,2 @@
-
+image:
+  tag: <+pipeline.variables.version>
