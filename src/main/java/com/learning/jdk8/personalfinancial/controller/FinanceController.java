@@ -5,8 +5,11 @@ import com.learning.jdk8.personalfinancial.service.FinanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Properties;
+
 import org.springframework.http.HttpStatus;
 
 @RestController
@@ -20,5 +23,13 @@ public class FinanceController {
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, BigDecimal> calculate(@RequestBody Salary salary) {
         return financeService.calculateDistribution(salary);
+    }
+
+    @GetMapping("/version")
+    @ResponseStatus(HttpStatus.OK)
+    public String getVersion() throws IOException {
+        final Properties properties = new Properties();
+        properties.load(this.getClass().getResourceAsStream("/project.properties"));
+        return properties.getProperty("version");
     }
 }
