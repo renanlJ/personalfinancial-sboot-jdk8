@@ -22,7 +22,7 @@ public class FinanceController {
         return financeService.calculateDistribution(salary);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/new")
     @ResponseStatus(HttpStatus.OK)
     public String test() {
         return "test success!";
