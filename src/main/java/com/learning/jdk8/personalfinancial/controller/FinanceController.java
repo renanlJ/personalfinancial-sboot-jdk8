@@ -21,4 +21,10 @@ public class FinanceController {
     public Map<String, BigDecimal> calculate(@RequestBody Salary salary) {
         return financeService.calculateDistribution(salary);
     }
+
+    @GetMapping("/test")
+    @ResponseStatus(HttpStatus.OK)
+    public String test() {
+        return "test success!";
+    }
 }
