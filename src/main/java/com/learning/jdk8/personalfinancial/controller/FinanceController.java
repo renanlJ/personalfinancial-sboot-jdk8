@@ -19,7 +19,7 @@ public class FinanceController {
     @Autowired
     private FinanceService financeService;
 
-    @PostMapping("/calculate")
+    @PostMapping("/calculatenew")
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, BigDecimal> calculate(@RequestBody Salary salary) {
         return financeService.calculateDistribution(salary);
