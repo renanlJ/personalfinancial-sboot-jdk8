@@ -1,12 +1,6 @@
-# 1.0.0 (2025-05-14)
-
-
-### Bug Fixes
-
-* update .gitignore ([9c65479](https://github.com/renanlJ/personalfinancial-sboot-jdk8/commit/9c65479870a99861176a3d80dad5c7bbf34184bf))
+# [0.1.0](https://github.com/renanlJ/personalfinancial-sboot-jdk8/compare/v0.0.0...v0.1.0) (2025-05-15)
 
 
 ### Features
 
-* add API that returns version ([03ce743](https://github.com/renanlJ/personalfinancial-sboot-jdk8/commit/03ce743138860db1a4d9b4a723c695f791e376b6))
-* update version in pom.xml ([e7d0cdf](https://github.com/renanlJ/personalfinancial-sboot-jdk8/commit/e7d0cdf3e17779f10a5c9f2e4194c885d2b7b83d))
+* new resource ([72d26c7](https://github.com/renanlJ/personalfinancial-sboot-jdk8/commit/72d26c7e597f39fc89702444c65dd7e8b2eb9265))

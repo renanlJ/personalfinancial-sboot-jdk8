@@ -23,6 +23,6 @@
 hs_err_pid*
 
 target/
-.releaserc
 node_modules/
+.releaserc
 package*
