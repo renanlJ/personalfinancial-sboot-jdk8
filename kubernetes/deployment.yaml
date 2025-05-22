@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: "renanl/personalfinancial-sboot-jdk8:1.0.0"
+        image: "renanl/personalfinancial-sboot-jdk8:0.1.0"
         resources:
           requests:
             cpu: 100m
