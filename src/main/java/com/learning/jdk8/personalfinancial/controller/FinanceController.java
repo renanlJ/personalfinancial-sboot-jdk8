@@ -25,18 +25,11 @@ public class FinanceController {
         return financeService.calculateDistribution(salary);
     }
 
-<<<<<<< HEAD
     @GetMapping("/version")
     @ResponseStatus(HttpStatus.OK)
     public String getVersion() throws IOException {
         final Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("/project.properties"));
         return properties.getProperty("version");
-=======
-    @GetMapping("/new")
-    @ResponseStatus(HttpStatus.OK)
-    public String test() {
-        return "test success!";
->>>>>>> main
     }
 }
