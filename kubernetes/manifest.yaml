@@ -8,8 +8,26 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: personalfinancial-sboot-jdk8
+  name: personalfinancial-sboot-jdk8-1
   namespace: personal
+  annotations:
+    harness.io/primary-service: "true"
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: personalfinancial-sboot-jdk8-2
+  namespace: personal
+  annotations:
+    harness.io/stage-service: "true"
 spec:
   selector:
     app: backend
