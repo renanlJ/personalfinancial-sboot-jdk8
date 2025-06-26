@@ -1,5 +1,7 @@
 steps:
-- name: maven compile
-  script: mvn compile
+  - name: maven:3-eclipse-temurin-17-alpine
+    entrypoint: mvn
+    args: ["test"]
 
-logging: NONE
+options:
+  logging: CLOUD_LOGGING_ONLY
