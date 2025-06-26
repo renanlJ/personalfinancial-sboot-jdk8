@@ -4,7 +4,7 @@ steps:
     args: ["package", "-Dmaven.test.skip=true"]
   - name: gcr.io/cloud-builders/docker
     args: ["build", "-t", "us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/personalfinancial-sboot-jdk8", "."]
-images: ["us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/personalfinancial-sboot-jdk8"]
+images: ["us-central1-docker.pkg.dev/$PROJECT_ID/personalfinancial-sboot-jdk8-repo/personalfinancial-sboot-jdk8:tag1"]
 
 options:
   logging: CLOUD_LOGGING_ONLY
