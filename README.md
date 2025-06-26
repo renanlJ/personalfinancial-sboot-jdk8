@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é uma aplicação de gerenciamento financeiro pessoal desenvolvida em Java utilizando o framework Spring Boot. O objetivo é permitir que os usuários registrem seus salários e calculem a distribuição de gastos em diferentes categorias, como custos essenciais, educação, aposentadoria, entre outros.
+Este projeto é uma aplicação de gerenciamento financeiro pessoal desenvolvida em Java utilizando o framework Spring Boot. O objetivo é permitir que os usuários registrem seus salários e calculem a distribuição de gastos em diferentes categorias, como custos essenciais, educação, aposentadoria, entre outros. (teste)
 
 ## Tecnologias Utilizadas
 
